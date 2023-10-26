@@ -1,42 +1,38 @@
-# Top Hat Question Notifier
+# Top Hat Question Notifier (for mac)
 
-A Python script that notifies the mac user when there's a new question on Top Hat classrooms. 
+A Python script that notifies macOS users of new questions on Top Hat classrooms.
 
-## Setup
+## Prerequisites
 
-## Setup and Install
-
-0. **Clone the repository**:
-    git clone https://github.com/jamiezzhou/tophat_firewall.git
-
-
-1. **Prerequisites**: 
-    - Python 3.x
-    - Chrome browser
-    - [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/); or install with homebrew 
+- Python 3.x
+- Chrome browser
+- [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/). If you're using Homebrew, you can install it with:
     ```bash
     brew install --cask chromedriver
     ```
 
-2. **Libraries to Install**:
-   Install the required Python libraries with the following command:
+## Setup and Installation
 
+1. **Clone the Repository**:
     ```bash
-    pip install playsound selenium bs4 playsound configparser ast
+    git clone https://github.com/jamiezzhou/tophat_firewall.git
     ```
 
-3. **Config File Setup**:
-    - Modify the `config.ini` file accordingly
-        - `Login`: `url` pointing to the login page.
-        - `URLs`: `urls` being a list of URLs to be monitored.
+2. **Install Required Libraries**:
+    Use pip to install the necessary Python libraries:
+    ```bash
+    pip install playsound selenium bs4 configparser
+    ```
 
-    Sample `config.ini`:
-
+3. **Configuration**:
+    - Adjust the `config.ini` file to your needs.
+        - `Login`: Add the `url` of the login page.
+        - `URLs`: Add the `urls` (a list) that you want to monitor.
+    Example of a `config.ini` file:
     ```ini
-    # Login page for website
     [Login]
     url = "https://app.tophat.com/e"
-    # Array of top hat urls you want to check/access
+    
     [URLs]
     urls = [
         "https://app.tophat.com/e/12345678/lecture/"
@@ -45,17 +41,20 @@ A Python script that notifies the mac user when there's a new question on Top Ha
 
 ## Usage
 
-1. Run the script:
-
+1. **Run the Script**:
     ```bash
     python3 Notify_mac.py
     ```
 
-2. The first time you run the script, it will open a browser window for you to manually log in. After logging in, press Enter in the terminal to save the login cookies.
+2. **First-time Login**:
+    - During the first execution, the script opens a browser for manual login. 
+    - After successfully logging in, return to the terminal and press Enter. This action saves the login cookies for subsequent uses.
 
-3. The script will continuously monitor the specified websites and notify you of any new questions.
+3. **Monitoring**:
+    The script will then keep an eye on the websites you specified. When there's a new question, you'll get a notification.
 
-## Note
+## Important Notes
 
-- This script is specifically designed for macOS. For other OS, some modifications might be required.
-- This script allows automatic login through cookie setting. If the login cookie expiers, please delete the content in the `cookie.txt` file and rerun the program to login in again.
+- **Operating System**: This script is tailored for macOS. Adaptations might be necessary for other operating systems.
+  
+- **Automatic Login**: The script enables auto-login using saved cookies. If these cookies expire, empty the `cookie.txt` file and rerun the program to log in again.
