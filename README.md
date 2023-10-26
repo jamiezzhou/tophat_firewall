@@ -1,15 +1,17 @@
 # Top Hat Question Notifier (for mac)
 
-A Python script that notifies macOS users of new questions on Top Hat classrooms.
+A Python script that notifies macOS/Windows users of new questions on Top Hat classrooms.
 
-## Prerequisites
+### Prerequisites
 
 - Python 3.x
 - Chrome browser
-- [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/). If you're using Homebrew, you can install it with:
+- [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
+  - macOS: Install with homebrew:
     ```bash
     brew install --cask chromedriver
     ```
+  - Windows: A executable is provided in this repo. You can also download it yourself and place it in the same folder.
 
 ## Setup and Installation
 
@@ -21,7 +23,7 @@ A Python script that notifies macOS users of new questions on Top Hat classrooms
 2. **Install Required Libraries**:
     Use pip to install the necessary Python libraries:
     ```bash
-    pip install playsound selenium bs4 configparser
+    pip install selenium bs4 playsound configparser ast plyer
     ```
 
 3. **Configuration**:
@@ -43,7 +45,7 @@ A Python script that notifies macOS users of new questions on Top Hat classrooms
 
 1. **Run the Script**:
     ```bash
-    python3 Notify_mac.py
+    python3 Notify.py
     ```
 
 2. **First-time Login**:
@@ -55,6 +57,7 @@ A Python script that notifies macOS users of new questions on Top Hat classrooms
 
 ## Important Notes
 
-- **Operating System**: This script is tailored for macOS. Adaptations might be necessary for other operating systems.
+- **Operating System**: This script is tailored for macOS and Windows. Adaptations might be necessary for other operating systems.
   
 - **Automatic Login**: The script enables auto-login using saved cookies. If these cookies expire, empty the `cookie.txt` file and rerun the program to log in again.
+
