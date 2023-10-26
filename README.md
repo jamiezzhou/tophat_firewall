@@ -1,48 +1,61 @@
-# Top Hat Notify
-Simple Python script to notify me when a new Top Hat question is posted. 
+# Top Hat Question Notifier
 
-Now you can safely skip class and still be notified when the prof posts a Top Hat question!
+A Python script that notifies the mac user when there's a new question on Top Hat classrooms. 
 
----
-## Features
- - Works with multiple Top Hat courses
- - Plays notification sound (notifySound.wav)
- - Prints notification to console
- - On Windows, sends a proper Windows notification
----
+## Setup
+
 ## Setup and Install
 
-### Clone the repository
-    git clone https://github.com/Beskamir/TopHatNotify
+0. **Clone the repository**:
+    git clone https://github.com/jamiezzhou/tophat_firewall.git
 
-### Setup your config.ini file
- - Rename sampleConfig.ini to config.ini 
- - Fill it with
-   - Your credentials
-   - The Top Hat urls you want it to check
 
-### Install the necessary libraries (some of these should be installed by default but I'll list them anyway)
-    pip install selenium
-    pip install playsound
-    pip install win10toast
-    pip install typing
-    pip install time
-    pip install configparser
-    pip install json
-    pip install os
+1. **Prerequisites**: 
+    - Python 3.x
+    - Chrome browser
+    - [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/); or install with homebrew 
+    ```bash
+    brew install --cask chromedriver
+    ```
 
-### Run the Python file
-    py -3 .\Notify.py
----
-## Platform/Python Requirments
- - Developed and tested on Windows 10
- - Should be crossplatform except for win10toast
- - Uses Python 3 but it might be compatible with Python 2
+2. **Libraries to Install**:
+   Install the required Python libraries with the following command:
 
-## Known issues
- - Might have some false positives
+    ```bash
+    pip install playsound selenium bs4 playsound configparser ast
+    ```
 
-## Nice to have features that I probably won't implement unless I get bored
- - Different notification sound for first message vs reminders
- - Time stamp the notifications when printing them to the console
- - Ability to dismiss or turn off the notification reminders 
+3. **Config File Setup**:
+    - Modify the `config.ini` file accordingly
+        - `Login`: `url` pointing to the login page.
+        - `URLs`: `urls` being a list of URLs to be monitored.
+
+    Sample `config.ini`:
+
+    ```ini
+    # Login page for website
+    [Login]
+    url = "https://app.tophat.com/e"
+    # Array of top hat urls you want to check/access
+    [URLs]
+    urls = [
+        "https://app.tophat.com/e/12345678/lecture/"
+        ]
+    ```
+
+## Usage
+
+1. Run the script:
+
+    ```bash
+    python3 Notify_mac.py
+    ```
+
+2. The first time you run the script, it will open a browser window for you to manually log in. After logging in, press Enter in the terminal to save the login cookies.
+
+3. The script will continuously monitor the specified websites and notify you of any new questions.
+
+## Note
+
+- This script is specifically designed for macOS. For other OS, some modifications might be required.
+- This script allows automatic login through cookie setting. If the login cookie expiers, please delete the content in the `cookie.txt` file and rerun the program to login in again.
